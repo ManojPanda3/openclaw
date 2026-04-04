@@ -199,7 +199,7 @@ function findGeminiCliCredentialsInTree(
   try {
     for (const entry of credentialFs.readdirSync(dir, { withFileTypes: true })) {
       const path = join(dir, entry.name);
-      if (entry.isFile() && entry.name === "oauth2.js") {
+      if (entry.isFile() && entry.name.endsWith(".js")) {
         const credentials = readGeminiCliCredentialsFile(path);
         if (credentials) {
           return credentials;
